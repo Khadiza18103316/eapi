@@ -9,7 +9,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('/products','ProductController');
+Route::apiResource('/products','\App\Http\Controllers\ProductController');
 Route::group(['prefix'=>'products'],function(){
     Route::apiResource('/{product}/reviews','ReviewController');
 });
