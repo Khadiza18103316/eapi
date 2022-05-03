@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Http\Resources\Product\ProductCollection;
 use App\Http\Resources\Product\ProductResource;
+use App\Http\Resources\Product\ProductCollection;
 use App\Models\Model\Product;
-use App\Models\Model\Review;
 
 class ProductController extends Controller
 {
@@ -19,7 +18,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ProductCollection::collection(Product::paginate(20));
+        return ProductResource::collection(Product::paginate(20));
+
+        // return ProductCollection::collection(Product::paginate(20));
     }
 
     /**
