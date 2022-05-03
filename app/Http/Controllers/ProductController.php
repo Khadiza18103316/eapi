@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Resources\Product\ProductCollection;
 use App\Http\Resources\Product\ProductResource;
+use App\Models\Model\Product;
 
 class ProductController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        // return Product::all();
+        return ProductCollection::collection(Product::all());
     }
 
     /**
@@ -49,7 +52,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
 
-       return new ProductResource($product);
+        return new ProductResource($product);
     }
 
     /**
