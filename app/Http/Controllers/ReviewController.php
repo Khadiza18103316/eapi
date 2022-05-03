@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\Review;
+use App\Http\Resources\ReviewResource;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Model\Product;
+use App\Models\Model\Review;
+use Database\Factories\Model\ReviewFactory;
 
 class ReviewController extends Controller
 {
@@ -13,9 +16,9 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $product)
     {
-        //
+        return ReviewResource::collection($product->reviews);
     }
 
     /**
@@ -25,7 +28,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
